@@ -1,5 +1,7 @@
-package org.orange.mobiletjut.app;
+package org.orange.mobiletjut.fragment;
 
+
+import org.orange.mobiletjut.R;
 
 import android.app.ActionBar;
 import android.app.Activity;

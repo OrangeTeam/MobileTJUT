@@ -1,4 +1,7 @@
-package org.orange.mobiletjut.app;
+package org.orange.mobiletjut.activity;
+
+import org.orange.mobiletjut.R;
+import org.orange.mobiletjut.fragment.NavigationDrawerFragment;
 
 import android.app.ActionBar;
 import android.app.Activity;

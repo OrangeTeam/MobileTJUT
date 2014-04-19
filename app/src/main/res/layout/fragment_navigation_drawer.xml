@@ -6,4 +6,4 @@
     android:divider="@android:color/transparent"
     android:dividerHeight="0dp"
     android:background="#cccc"
-    tools:context="org.orange.mobiletjut.app.NavigationDrawerFragment" />
+    tools:context="org.orange.mobiletjut.fragment.NavigationDrawerFragment" />
