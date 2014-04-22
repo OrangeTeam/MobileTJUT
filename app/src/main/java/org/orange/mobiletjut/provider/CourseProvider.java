@@ -63,8 +63,10 @@ public class CourseProvider extends ContentProvider {
                 throw new AssertionError("unknown table: " + table);
             }
         }
-        return mOpenHelper.getReadableDatabase().query(
+        Cursor cursor = mOpenHelper.getReadableDatabase().query(
                 table, projection, selection, selectionArgs, null, null, sortOrder);
+        cursor.setNotificationUri(getContext().getContentResolver(), uri);
+        return cursor;
     }
 
     @Override
@@ -73,22 +75,28 @@ public class CourseProvider extends ContentProvider {
         if(match != COURSES && match != TIME_AND_ADDRESSES)
             throw new IllegalArgumentException("Illegal URI: " + uri);
         long id = mOpenHelper.getWritableDatabase().insert(getTable(uri), null, values);
-        if(id != -1)
+        if(id != -1) {
+            getContext().getContentResolver().notifyChange(uri, null);
             return ContentUris.withAppendedId(uri, id);
-        else
+        } else {
             return null;
+        }
     }
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
         selection = appendIdIfNecessary(uri, selection);
-        return mOpenHelper.getWritableDatabase().delete(getTable(uri), selection, selectionArgs);
+        int affected = mOpenHelper.getWritableDatabase().delete(getTable(uri), selection, selectionArgs);
+        if(affected > 0) getContext().getContentResolver().notifyChange(uri, null);
+        return affected;
     }
 
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         selection = appendIdIfNecessary(uri, selection);
-        return mOpenHelper.getWritableDatabase().update(getTable(uri), values, selection, selectionArgs);
+        int affected =  mOpenHelper.getWritableDatabase().update(getTable(uri), values, selection, selectionArgs);
+        if(affected > 0) getContext().getContentResolver().notifyChange(uri, null);
+        return affected;
     }
 
     private static String appendIdIfNecessary(Uri uri, String selection) {

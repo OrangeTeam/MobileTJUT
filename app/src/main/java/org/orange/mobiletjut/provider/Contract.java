@@ -10,11 +10,11 @@ public final class Contract {
      */
     private Contract() {}
 
-    private static final String SCHEMA = "content://";
+    private static final String SCHEMA = "content";
 
     public static final String AUTHORITY = "org.orange.mobiletjut.provider";
-    private static final String AUTHORITY_COURSE = AUTHORITY + ".course";
-    private static final String AUTHORITY_POST = AUTHORITY + ".post";
+    public static final String AUTHORITY_COURSE = AUTHORITY + ".course";
+    public static final String AUTHORITY_POST = AUTHORITY + ".post";
 
     public static final class Course implements BaseColumns {
 
@@ -32,7 +32,7 @@ public final class Contract {
         /**学分*/
         public static final String CREDIT = "credit";
         /**教学班号*/
-        public static final String TEACHINGCLASS = "teaching_class";
+        public static final String TEACHING_CLASS = "teaching_class";
         /**学年*/
         public static final String YEAR = "year";
         /**学期，如1、2、3分别代表第一、二、三学期*/
@@ -40,9 +40,9 @@ public final class Contract {
         /**课程性质*/
         public static final String KIND = "kind";
         /**结课考核成绩*/
-        public static final String TESTSCORE = "test_score";
+        public static final String TEST_SCORE = "test_score";
         /**期末总评成绩*/
-        public static final String TOTALSCORE = "total_score";
+        public static final String TOTAL_SCORE = "total_score";
         /**备注*/
         public static final String NOTE = "note";
         /**

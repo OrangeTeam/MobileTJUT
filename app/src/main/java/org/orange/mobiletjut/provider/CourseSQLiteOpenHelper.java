@@ -26,9 +26,9 @@ public class CourseSQLiteOpenHelper extends SQLiteOpenHelper {
             Course.YEAR + TYPE_INTEGER + SEPARATOR_COMMA +
             Course.SEMESTER + TYPE_INTEGER + SEPARATOR_COMMA +
             Course.TEACHERS + TYPE_TEXT + SEPARATOR_COMMA +
-            Course.TEACHINGCLASS + TYPE_TEXT + SEPARATOR_COMMA +
-            Course.TESTSCORE + TYPE_REAL + SEPARATOR_COMMA +
-            Course.TOTALSCORE + TYPE_REAL + SEPARATOR_COMMA +
+            Course.TEACHING_CLASS + TYPE_TEXT + SEPARATOR_COMMA +
+            Course.TEST_SCORE + TYPE_REAL + SEPARATOR_COMMA +
+            Course.TOTAL_SCORE + TYPE_REAL + SEPARATOR_COMMA +
             Course.NOTE + TYPE_TEXT + ")";
     private static final String SQL_DROP_COURSE =
             "DROP TABLE IF EXISTS " + Course.TABLE_NAME;
