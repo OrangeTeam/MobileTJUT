@@ -1,6 +1,7 @@
 package org.orange.mobiletjut.activity;
 
 import org.orange.mobiletjut.R;
+import org.orange.mobiletjut.fragment.CourseFragment;
 import org.orange.mobiletjut.fragment.NavigationDrawerFragment;
 
 import android.app.ActionBar;
@@ -48,10 +49,16 @@ public class MainActivity extends Activity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+        Fragment newFragment;
+        if (position == 0) {
+            newFragment = new CourseFragment();
+        } else {
+            newFragment = PlaceholderFragment.newInstance(position + 1);
+        }
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                .replace(R.id.container, newFragment)
                 .commit();
     }
 
