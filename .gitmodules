@@ -1,0 +1,3 @@
+[submodule "libraries/calendarview"]
+	path = libraries/calendarview
+	url = git@github.com:OrangeTeam/android-calendarview.git
