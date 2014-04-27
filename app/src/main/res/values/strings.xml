@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">MobileTJUT</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_example">Example action</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">移动校园</string>
+    <string name="title_section1">第一节</string>
+    <string name="title_section2">第二节</string>
+    <string name="title_section3">第三节</string>
+    <string name="navigation_drawer_open">打开导航栏</string>
+    <string name="navigation_drawer_close">关闭导航栏</string>
+    <string name="action_example">示例活动</string>
+    <string name="action_refresh">更新</string>
+    <string name="settings">设置</string>
+    <string name="no_course">没有课程信息，请更新</string>
+    <string name="prefs_general_settings">一般设置</string>
+    <string name="pref_week_number">周次</string>
+    <string name="pref_week_number_summary">现在是第 %d 周</string>
+    <string name="dialog_week_number_label1">现在是第</string>
+    <string name="dialog_week_number_label2">周</string>
 
 </resources>
