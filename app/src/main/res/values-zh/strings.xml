@@ -11,5 +11,10 @@
     <string name="action_settings">设置</string>
     <string name="action_refresh">更新</string>
     <string name="no_course">没有课程信息，请更新</string>
+    <string name="prefs_general_settings">一般设置</string>
+    <string name="pref_week_number">周次</string>
+    <string name="pref_week_number_summary">现在是第 %d 周</string>
+    <string name="dialog_week_number_label1">现在是第</string>
+    <string name="dialog_week_number_label2">周</string>
 
 </resources>

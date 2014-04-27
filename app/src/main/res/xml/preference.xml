@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+            android:title="@string/prefs_general_settings">
+        <org.orange.mobiletjut.preference.WeekNumberPreference
+                android:key = "pref_zeroth_week"
+                android:title = "@string/pref_week_number"
+                android:summary = "@string/pref_week_number_summary"
+                android:defaultValue="1392566400000L" />
+        <!-- 1392566400000 为北京时间2014年2月17日 0:00:00的时间戳 -->
+    </PreferenceCategory>
+
+</PreferenceScreen>
