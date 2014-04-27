@@ -15,3 +15,9 @@ allprojects {
         mavenLocal()
     }
 }
+
+project(':libraries:calendarview:calendarview').afterEvaluate { calendarviewProject ->
+    calendarviewProject.android.lintOptions {
+        lintConfig calendarviewProject.file('../../calendarview_lint.xml')
+    }
+}
