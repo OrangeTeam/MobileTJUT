@@ -127,8 +127,11 @@ public class WeekNumberPreference extends DialogPreference {
     @Override
     protected void onDialogClosed(boolean positiveResult) {
         if (positiveResult) {
-            setZerothWeek(mCalendarView.getZerothWeek());
-            persistLong(mZerothWeek);
+            final long newValue = adjustToFirstDayOfWeek(mCalendarView.getZerothWeek());
+            // 触发Preference.OnPreferenceChange
+            if(!callChangeListener(newValue)) return;
+            setZerothWeek(newValue);
+            persistLong(newValue);
         }
     }
 

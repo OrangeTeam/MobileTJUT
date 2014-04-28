@@ -110,6 +110,8 @@ public class AccountPreference extends DialogPreference {
         if (positiveResult) {
             final String userid = mUserId.getText().toString();
             final String password = mPassword.getText().toString();
+            // 以userid作为newValue触发Preference.OnPreferenceChange
+            if(!callChangeListener(userid)) return;
             SharedPreferences.Editor editor = getEditor();
             editor.putString(getKey() + USER_ID_SUFFIX, userid);
             editor.putString(getKey() + PASSWORD_SUFFIX,
