@@ -47,7 +47,8 @@ public final class ContentResolverUtils {
                         .build());
             }
         }
-        contentResolver.applyBatch(Contract.AUTHORITY_COURSE, new ArrayList<>(operations));
+        contentResolver.applyBatch(Contract.AUTHORITY_COURSE,
+                new ArrayList<ContentProviderOperation>(operations));
     }
 
 }
