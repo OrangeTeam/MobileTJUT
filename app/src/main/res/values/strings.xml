@@ -12,6 +12,11 @@
     <string name="settings">设置</string>
     <string name="no_course">没有课程信息，请更新</string>
     <string name="prefs_general_settings">一般设置</string>
+    <string name="student_id">学号</string>
+    <string name="password">密码</string>
+    <string name="pref_student_account">账号</string>
+    <string name="pref_student_account_summary_not_set">您还没有设置查询账号，请点击设置。</string>
+    <string name="pref_student_account_summary_have_set">您的学号是：%s</string>
     <string name="pref_week_number">周次</string>
     <string name="pref_week_number_summary">现在是第 %d 周</string>
     <string name="dialog_week_number_label1">现在是第</string>

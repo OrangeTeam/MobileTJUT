@@ -1,9 +1,12 @@
 package org.orange.mobiletjut.activity;
 
 import org.orange.mobiletjut.R;
+import org.orange.mobiletjut.preference.AccountPreference;
 import org.orange.mobiletjut.preference.WeekNumberPreference;
 import org.orange.mobiletjut.util.TimeUtils;
 
+import static org.orange.mobiletjut.util.PreferenceUtils.KEY_PREF_ACCOUNT;
+import static org.orange.mobiletjut.util.PreferenceUtils.KEY_PREF_ACCOUNT_STUDENT_ID;
 import static org.orange.mobiletjut.util.PreferenceUtils.KEY_PREF_ZEROTH_WEEK;
 
 import android.app.Activity;
@@ -91,13 +94,11 @@ public class SettingsActivity extends Activity {
             new Preference.OnPreferenceChangeListener() {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
-            String stringValue = value.toString();
-
             if (preference instanceof ListPreference) {
                 // For list preferences, look up the correct display value in
                 // the preference's 'entries' list.
                 ListPreference listPreference = (ListPreference) preference;
-                int index = listPreference.findIndexOfValue(stringValue);
+                int index = listPreference.findIndexOfValue(value.toString());
 
                 // Set the summary to reflect the new value.
                 preference.setSummary(
@@ -105,6 +106,16 @@ public class SettingsActivity extends Activity {
                                 ? listPreference.getEntries()[index]
                                 : null);
 
+            } else if (preference instanceof AccountPreference) {
+                final String summary;
+                if (value == null) {
+                    summary = preference.getContext()
+                            .getString(R.string.pref_student_account_summary_not_set);
+                } else {
+                    summary = preference.getContext()
+                            .getString(R.string.pref_student_account_summary_have_set, value);
+                }
+                preference.setSummary(summary);
             } else if (preference instanceof WeekNumberPreference) {
                 final int weekNumber = TimeUtils.getWeeksSince(
                         (Long) value, Calendar.MONDAY, System.currentTimeMillis());
@@ -114,7 +125,7 @@ public class SettingsActivity extends Activity {
             } else {
                 // For all other preferences, set the summary to the value's
                 // simple string representation.
-                preference.setSummary(stringValue);
+                preference.setSummary(value.toString());
             }
             return true;
         }
@@ -135,6 +146,10 @@ public class SettingsActivity extends Activity {
             bindPreferenceSummaryToValue(
                     findPreference(KEY_PREF_ZEROTH_WEEK),
                     currentValues.get(KEY_PREF_ZEROTH_WEEK));
+            bindPreferenceSummaryToValue(
+                    findPreference(KEY_PREF_ACCOUNT),
+                    currentValues.get(KEY_PREF_ACCOUNT_STUDENT_ID)
+            );
         }
     }
 

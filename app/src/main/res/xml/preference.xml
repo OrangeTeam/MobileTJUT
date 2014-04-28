@@ -5,10 +5,12 @@
 
     <PreferenceCategory
             android:title="@string/prefs_general_settings">
+        <org.orange.mobiletjut.preference.AccountPreference
+                android:key = "pref_account"
+                android:title = "@string/pref_student_account" />
         <org.orange.mobiletjut.preference.WeekNumberPreference
                 android:key = "pref_zeroth_week"
                 android:title = "@string/pref_week_number"
-                android:summary = "@string/pref_week_number_summary"
                 android:defaultValue="1392566400000L" />
         <!-- 1392566400000 为北京时间2014年2月17日 0:00:00的时间戳 -->
     </PreferenceCategory>

@@ -1,5 +1,7 @@
 package org.orange.mobiletjut.util;
 
+import org.orange.mobiletjut.preference.AccountPreference;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -7,6 +9,12 @@ import android.preference.PreferenceManager;
 import java.util.Calendar;
 
 public class PreferenceUtils {
+    /** 设置项“帐号”的KEY */
+    public static final String KEY_PREF_ACCOUNT = "pref_account";
+    /** 设置项“帐号”中学号的KEY */
+    public static final String KEY_PREF_ACCOUNT_STUDENT_ID = KEY_PREF_ACCOUNT + AccountPreference.USER_ID_SUFFIX;
+    /** 设置项“帐号”中密码的KEY */
+    public static final String KEY_PREF_ACCOUNT_PASSWORD = KEY_PREF_ACCOUNT + AccountPreference.PASSWORD_SUFFIX;
     /** 设置项“第0周”的KEY */
     public static final String KEY_PREF_ZEROTH_WEEK = "pref_zeroth_week";
 
@@ -68,6 +76,46 @@ public class PreferenceUtils {
             return null;
         } else {
             return TimeUtils.getWeeksSince(c.getTimeInMillis(), Calendar.MONDAY);
+        }
+    }
+
+
+    /**
+     * 已经设置了帐号（学号和密码）
+     * @param context 上下文环境
+     * @return 如果学号和密码都已经设置了，返回true；否则返回false
+     */
+    public static boolean hasSetAccountStudentIDAndPassword(Context context){
+        String username = PreferenceManager.getDefaultSharedPreferences(context)
+                .getString(KEY_PREF_ACCOUNT_STUDENT_ID, null);
+        String password = PreferenceManager.getDefaultSharedPreferences(context)
+                .getString(KEY_PREF_ACCOUNT_PASSWORD, null);
+        return username != null && password != null;
+    }
+    /**
+     * 取得账号的学号
+     * @param context 上下文环境
+     * @return 如果设置过学号，返回此学号；如果尚没设置学号，返回null
+     */
+    public static String getAccountStudentID(Context context){
+        return PreferenceManager.getDefaultSharedPreferences(context)
+                .getString(KEY_PREF_ACCOUNT_STUDENT_ID, null);
+    }
+    /**
+     * 取得账号的密码
+     * @param context 上下文环境
+     * @return 如果设置过密码，返回此密码；如果尚没设置密码，返回null
+     */
+    public static String getAccountPassword(Context context){
+        String username = PreferenceManager.getDefaultSharedPreferences(context)
+                .getString(KEY_PREF_ACCOUNT_STUDENT_ID, null);
+        String password = PreferenceManager.getDefaultSharedPreferences(context)
+                .getString(KEY_PREF_ACCOUNT_PASSWORD, null);
+        if (password == null) {
+            return null;
+        } else {
+            return AccountPreference
+                    .decrypt(AccountPreference.getStoragePassword(username), password);
         }
     }
 
